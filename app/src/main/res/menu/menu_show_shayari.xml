@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.free.hindi.shayari.ShowShayariActivity">
+
+    <item
+        android:id="@+id/action_share"
+        android:title="Share"
+        android:icon="@drawable/ic_action_share"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_more_apps"
+        android:title="More Apps" />
+
+    <item
+        android:id="@+id/action_rate_us"
+        android:title="Rate Us" />
+
+</menu>

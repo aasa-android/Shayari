@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.free.hindi.shayari.ShayarilistActivity">
+
+    <item
+        android:id="@+id/action_more_apps"
+        android:title="More Apps" />
+
+    <item
+        android:id="@+id/action_rate_us"
+        android:title="Rate Us" />
+
+</menu>

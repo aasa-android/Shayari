@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Shayari</string>
+    <string name="title_activity_main">Meri Shayari</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_index">Index</string>
+    <string name="title_activity_shayarilist">Meri Shayari</string>
+    <string name="title_activity_show_shayari">Meri Shayari</string>
+    <string name="share_title">How do you want to share?</string>
+    <string name="banner_ad_unit_id">ca-app-pub-2536093602777959/4491359425</string>
+    <string name="title_activity_more_apps">More Apps</string>
+
+    <string name="hello_world">Hello world!</string>
+
+</resources>
