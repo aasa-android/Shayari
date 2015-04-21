@@ -40,7 +40,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_centerHorizontal="true"
-                android:textSize="25sp"
+                android:textSize="27sp"
                 android:textStyle="bold"
                 android:textColor="#E6E6E6" />
 
