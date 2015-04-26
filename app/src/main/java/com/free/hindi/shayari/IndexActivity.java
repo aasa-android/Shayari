@@ -19,7 +19,6 @@ public class IndexActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StartAppAd.showSplash(this, savedInstanceState);
         setContentView(com.free.hindi.shayari.R.layout.activity_index);
         StartAppAd.showSlider(this);
 
