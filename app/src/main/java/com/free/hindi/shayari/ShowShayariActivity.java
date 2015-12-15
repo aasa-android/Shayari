@@ -15,32 +15,30 @@ import com.google.android.gms.ads.AdView;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.startapp.android.publish.StartAppAd;
 
 import java.util.List;
 
 
 public class ShowShayariActivity extends ActionBarActivity {
 
-    TextView showshayari;
+    TextView showShayari;
     protected List<ParseObject> mShayari;
     int i;
-    private StartAppAd startAppAd = new StartAppAd(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.free.hindi.shayari.R.layout.activity_show_shayari);
-        StartAppAd.showSlider(this);
 
         Toolbar toolbar = (Toolbar) findViewById(com.free.hindi.shayari.R.id.app_bar);
         setSupportActionBar(toolbar);
+
 
         AdView mAdView = (AdView) findViewById(com.free.hindi.shayari.R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        showshayari = (TextView) findViewById(com.free.hindi.shayari.R.id.textView);
+        showShayari = (TextView) findViewById(com.free.hindi.shayari.R.id.textView);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery(ShayarilistActivity.mimage);
         query.whereEqualTo("objectId", ShayarilistActivity.sid);
@@ -54,11 +52,9 @@ public class ShowShayariActivity extends ActionBarActivity {
                     for (ParseObject message : mShayari) {
                         username[i] = message.getString("Shayari");
 
-                        // Toast.makeText(ChatActivity.this, username[i], Toast.LENGTH_LONG).show();
-                        showshayari.setText(username[i]);
+                        showShayari.setText(username[i]);
                         i++;
                     }
-                    Log.d("score", "Retrieved " + " scores");
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
                 }
@@ -93,6 +89,13 @@ public class ShowShayariActivity extends ActionBarActivity {
             case R.id.action_share:
                 sharePost();
                 break;
+            case R.id.action_home:
+                intent = new Intent(ShowShayariActivity.this, IndexActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                ShowShayariActivity.this.finish();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -101,14 +104,8 @@ public class ShowShayariActivity extends ActionBarActivity {
     private void sharePost() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, showshayari.getText());
+        shareIntent.putExtra(Intent.EXTRA_TEXT, showShayari.getText());
         startActivity(Intent.createChooser(shareIntent, getString(com.free.hindi.shayari.R.string.share_title)));
 
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        startAppAd.onResume();
     }
 }

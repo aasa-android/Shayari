@@ -4,6 +4,11 @@
     tools:context="com.free.hindi.shayari.ShowShayariActivity">
 
     <item
+        android:id="@+id/action_home"
+        android:title="Home"
+        android:icon="@drawable/ic_action_home"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/action_share"
         android:title="Share"
         android:icon="@drawable/ic_action_share"
@@ -15,6 +20,8 @@
 
     <item
         android:id="@+id/action_rate_us"
-        android:title="Rate Us" />
+        android:title="Rate Us"
+        android:icon="@drawable/ic_action_action_grade"
+        app:showAsAction="always"/>
 
 </menu>

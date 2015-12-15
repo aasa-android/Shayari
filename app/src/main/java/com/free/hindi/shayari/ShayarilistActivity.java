@@ -27,19 +27,17 @@ public class ShayarilistActivity extends ActionBarActivity {
     ListAdapter adapter;
     protected static String sid;
     public static String mimage;
-    private StartAppAd startAppAd = new StartAppAd(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.free.hindi.shayari.R.layout.activity_shayarilist);
-        StartAppAd.showSlider(this);
 
         AdView mAdView = (AdView) findViewById(com.free.hindi.shayari.R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-          mimage = getIntent().getStringExtra("image");
+        mimage = getIntent().getStringExtra("image");
 
         Toolbar toolbar = (Toolbar) findViewById(com.free.hindi.shayari.R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -76,12 +74,6 @@ public class ShayarilistActivity extends ActionBarActivity {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        startAppAd.onResume();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_shayarilist, menu);
@@ -108,7 +100,6 @@ public class ShayarilistActivity extends ActionBarActivity {
             default:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

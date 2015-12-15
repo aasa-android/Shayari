@@ -13,7 +13,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StartAppSDK.init(this, "102735663", "203650813", true);
         setContentView(com.free.hindi.shayari.R.layout.activity_main);
 
         final Handler handler = new Handler();

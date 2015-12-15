@@ -6,21 +6,22 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.startapp.android.publish.StartAppAd;
 
 
-public class IndexActivity extends ActionBarActivity {
+public class IndexActivity extends ActionBarActivity implements View.OnClickListener{
 
     ImageView mBewafa, mDard, mLove, mRomantic;
-    private StartAppAd startAppAd = new StartAppAd(this);
+    InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.free.hindi.shayari.R.layout.activity_index);
-        StartAppAd.showSlider(this);
 
         AdView mAdView = (AdView) findViewById(com.free.hindi.shayari.R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -31,52 +32,63 @@ public class IndexActivity extends ActionBarActivity {
         mLove = (ImageView) findViewById(com.free.hindi.shayari.R.id.love);
         mRomantic = (ImageView) findViewById(com.free.hindi.shayari.R.id.romantic);
 
-        mBewafa.setOnClickListener(new View.OnClickListener() {
+        mBewafa.setOnClickListener(this);
+        mDard.setOnClickListener(this);
+        mLove.setOnClickListener(this);
+        mRomantic.setOnClickListener(this);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3297319032078557/8221249620");
+
+        mInterstitialAd.setAdListener(new AdListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IndexActivity.this, ShayarilistActivity.class);
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+
+        requestNewInterstitial();
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(IndexActivity.this, ShayarilistActivity.class);
+        switch (view.getId()){
+            case R.id.bewafa:
                 intent.putExtra("image", "bewafa");
                 startActivity(intent);
-            }
-        });
-        mDard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IndexActivity.this, ShayarilistActivity.class);
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+                break;
+            case R.id.dard:
                 intent.putExtra("image", "dard");
                 startActivity(intent);
-            }
-        });
-        mLove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IndexActivity.this, ShayarilistActivity.class);
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+                break;
+            case R.id.love:
                 intent.putExtra("image", "love");
                 startActivity(intent);
-            }
-        });
-        mRomantic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IndexActivity.this, ShayarilistActivity.class);
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+                break;
+            case R.id.romantic:
                 intent.putExtra("image", "romantic");
                 startActivity(intent);
-            }
-        });
-
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+                break;
+        }
     }
 
-    @Override
-    public void onBackPressed() {
-        startAppAd.onBackPressed();
-        super.onBackPressed();
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        startAppAd.onResume();
-    }
-
-
 }
